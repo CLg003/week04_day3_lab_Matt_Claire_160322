@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {%block content%}
 {% for book in books%}
-<p><em>'{{book.title}}'</em> by {{book.author.name}}</p>
+<p><em><a href="/books/{{ book.id }}">'{{book.title}}'</a></em> by {{book.author.name}}</p>
 <form class="delete-form" action="/books/{{book.id}}/delete" method="POST"> <!-- NEW -->
             <button class="submit">Delete Book</button> <!-- NEW -->
           </form>

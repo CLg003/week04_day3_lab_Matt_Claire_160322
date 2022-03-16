@@ -30,4 +30,13 @@ def select_all():
         books.append(book)
     return books
 
+def select(id):
+    sql = "SELECT * FROM books WHERE id = %s"
+    values = [id]
+    result = run_sql(sql, values)[0]
+    author = author_repo.select(result['author_id'])
+    book = Book(result['title'], author, result['id'])
+    return book
+
+
     

@@ -17,13 +17,25 @@ def select_all():
 
     return authors
 
+# def check_author(author_name):
+#     author = None
+#     sql = "SELECT * FROM authors WHERE name = %s"
+#     values = [author_name]
+#     result = run_sql(sql, values)[0]
+#     if result is not None:
+#         author = Author(result['name'], result['id'])
+#     return author
+
 def save(author):
+    # author_check = check_author(author)
+    # if author_check == None:
     sql = "INSERT INTO authors (name) VALUES (%s) RETURNING *"
     values = [author.name]
     result = run_sql(sql, values)
     id = result[0]['id']
     author.id = id
     return author
+    # return author_check
 
 def select(id):
     author = None
